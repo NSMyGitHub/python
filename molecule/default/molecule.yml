@@ -4,8 +4,23 @@ dependency:
 driver:
   name: vagrant
 platforms:
-  - name: instance
+  - name: Centos7
+    box: generic/centos7
+    memory: 1024
+  - name: Centos8
+    box: generic/centos8
+    memory: 1024
+  - name: Ubuntu1804
+    box: generic/ubuntu1804
+    memory: 1024
+  - name: Ubuntu2004
+    box: generic/ubuntu2004
+    memory: 1024
 provisioner:
   name: ansible
 verifier:
   name: ansible
+lint: |
+        set -e
+        yamllint .
+        ansible-lint .
